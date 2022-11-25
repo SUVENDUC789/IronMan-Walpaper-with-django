@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <div class="container">
+        <div class="py-5 text-center bg-secondary text-white">
+            <h1 class="mb-3">Upload image here</h1>
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form}}
+                <input type="submit" class="btn btn-danger" value="Upload">
+            </form>
+        </div>
+       
+            <div class="row">
+                {% for x in img %}
+                <div class="col-sm-4">
+                    <div class="card m-2">
+                        <img src="{{x.photo.url}}" alt="" class="card-img-top" height="200px">
+                        <div class="card-footer"><small class="text-muted">{{x.date}}</small></div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+    
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  </body>
+</html>
